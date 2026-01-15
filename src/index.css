@@ -1,0 +1,147 @@
+﻿@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap");
+
+@theme {
+  --color-app-bg: #F9FAFB;
+  --color-app-card: #FFFFFF;
+  --color-app-border: #E2E5EA;
+  --color-app-primary: #1B1F2A;
+  --color-app-accent: #1F7A4A;
+  --color-app-neutral: #5F6B7A;
+  --color-app-positive: #16A34A;
+  --color-app-warning: #F59E0B;
+  --color-app-danger: #DC2626;
+  --color-app-surface: #F1F4F8;
+  --color-app-muted: #E8EDF3;
+  --shadow-card: 0 8px 20px rgba(15, 23, 42, 0.06);
+  --font-sans: "Manrope", "Segoe UI", Tahoma, sans-serif;
+  --font-display: "Sora", "Manrope", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --app-bg-image: radial-gradient(circle at 12% -10%, rgba(31, 122, 74, 0.18), transparent 50%),
+    radial-gradient(circle at 90% 0%, rgba(220, 38, 38, 0.12), transparent 48%),
+    radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.08), transparent 60%);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-app-bg: #0B111B;
+  --color-app-card: #101827;
+  --color-app-border: #1F2A3A;
+  --color-app-primary: #F8FAFC;
+  --color-app-accent: #2FA56A;
+  --color-app-neutral: #97A3B6;
+  --color-app-positive: #22C55E;
+  --color-app-warning: #F59E0B;
+  --color-app-danger: #F87171;
+  --color-app-surface: #111C2C;
+  --color-app-muted: #1C2738;
+  --shadow-card: 0 12px 24px rgba(0, 0, 0, 0.45);
+  --app-bg-image: radial-gradient(circle at 12% -10%, rgba(47, 165, 106, 0.22), transparent 55%),
+    radial-gradient(circle at 90% 0%, rgba(239, 68, 68, 0.18), transparent 50%);
+}
+
+:root[data-density="comfort"] {
+  font-size: 18px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Manrope", "Segoe UI", Tahoma, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-app-bg);
+    background-image: var(--app-bg-image);
+    color: var(--color-app-primary);
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Sora", "Manrope", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .page-title {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+
+  .page-subtitle {
+    @apply text-base text-app-neutral;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold;
+  }
+
+  .section-subtitle {
+    @apply text-xs uppercase tracking-wide text-app-neutral;
+  }
+
+  .kpi-card {
+    @apply relative overflow-hidden rounded-2xl border border-app-border bg-app-card shadow-card px-5 py-5 transition-shadow;
+  }
+
+  .kpi-card:hover {
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .kpi-label {
+    @apply text-xs uppercase tracking-wide text-app-neutral;
+  }
+
+  .kpi-value {
+    @apply text-2xl font-semibold text-app-primary;
+  }
+
+  .data-card {
+    @apply rounded-2xl border border-app-border bg-app-card shadow-card;
+  }
+
+  .data-header {
+    @apply flex items-center justify-between border-b border-app-border px-5 py-4;
+  }
+
+  .data-body {
+    @apply px-5 py-4;
+  }
+}
+
+@layer base {
+  table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--color-app-surface);
+    z-index: 1;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: var(--color-app-surface);
+  }
+
+  .recharts-default-tooltip,
+  .recharts-tooltip-item,
+  .recharts-tooltip-item-name,
+  .recharts-tooltip-item-separator,
+  .recharts-tooltip-item-value,
+  .recharts-tooltip-item-unit,
+  .recharts-tooltip-label {
+    color: var(--color-app-primary) !important;
+  }
+}
