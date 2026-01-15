@@ -1,0 +1,28 @@
+[package]
+name = "pizza-damico-buchhaltung"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { git = "https://github.com/tauri-apps/tauri", tag = "tauri-v2.9.5", features = [] }
+
+[dependencies]
+tauri = { version = "=2.9.5", features = [] }
+tauri-plugin-dialog = "=2.5.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+base64 = "0.22"
+chrono = { version = "0.4", features = ["serde"] }
+rusqlite = { version = "0.33", features = ["bundled"] }
+thiserror = "1.0"
+dirs-next = "2.0"
+rust_xlsxwriter = "0.73"
+zip = { version = "2.2", default-features = false, features = ["deflate"] }
+walkdir = "2.5"
+open = "5.3"
+tiny_http = "0.12"
+rand = "0.8"
+local-ip-address = "0.6"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
